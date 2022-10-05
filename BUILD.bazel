@@ -1,0 +1,67 @@
+cc_library(
+    name = "yoga",
+    srcs = glob(
+        ["yoga/**/*.cpp"],
+        allow_empty = False,
+    ),
+    hdrs = glob(
+        ["yoga/**/*.h"],
+        allow_empty = False,
+    ),
+    copts = [
+        "-fno-omit-frame-pointer",
+        "-fexceptions",
+        "-Wall",
+        "-Werror",
+        "-std=c++1y",
+        "-fPIC",
+        "-Iexternal/Yoga",
+    ],
+    includes = [
+        "yoga",
+    ],
+)
+
+objc_library(
+    name = "YogaKit",
+    srcs = glob(
+        ["YogaKit/Source/*.m"],
+        allow_empty = False,
+    ),
+    hdrs = glob(
+        ["YogaKit/Source/*.h"],
+        allow_empty = False,
+    ),
+    copts = [
+        "-fobjc-arc",
+        "-Wconditional-uninitialized",
+        "-Wdangling-else",
+        "-Wdeprecated-declarations",
+        "-Wimplicit-retain-self",
+        "-Wincomplete-implementation",
+        "-Wobjc-method-access",
+        "-Wobjc-missing-super-calls",
+        "-Wmismatched-return-types",
+        "-Wreturn-type",
+        "-Wno-global-constructors",
+        "-Wno-shadow",
+        "-Wunused-const-variable",
+        "-Wunused-function",
+        "-Wunused-property-ivar",
+        "-Wunused-result",
+        "-Wunused-value",
+        "-Iexternal/Yoga",
+    ],
+    module_name = "YogaKit",
+    sdk_frameworks = [
+        "CoreGraphics",
+        "Foundation",
+        "UIKit",
+    ],
+    visibility = [
+        "//visibility:public"
+    ],
+    deps = [
+        ":yoga",
+    ],
+)

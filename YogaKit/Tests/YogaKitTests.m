@@ -9,7 +9,7 @@
 
 #import <YogaKit/UIView+Yoga.h>
 #import <YogaKit/YGLayout+Private.h>
-#import <yoga/Yoga.h>
+#import "yoga/Yoga.h"
 
 @interface YogaKitTests : XCTestCase
 @end
